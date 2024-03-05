@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -38,6 +39,20 @@ class UsersController extends Controller
         $user = User::create($validatedData);
 
         // return response
+        return $user;
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $validatedData = $request->validate([
+            'name' => ['min:5'],
+            'email' => ['email', Rule::unique('users')->ignore($user->id)],
+            'password' => ['confirmed']
+        ]);
+
+        $user->fill($validatedData);
+        $user->save();
+
         return $user;
     }
 }
