@@ -18,4 +18,10 @@ class UsersController extends Controller
 
         return response()->json($users);
     }
+
+    public function show(Request $request, User $user)
+    {
+        $user->load('applications');
+        return response()->json($user);
+    }
 }
