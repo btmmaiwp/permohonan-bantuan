@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SchemesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::apiResource('users', UsersController::class);
+Route::apiResource('schemes', SchemesController::class);
