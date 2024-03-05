@@ -31,4 +31,11 @@ class Application extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+
+    //tinker command
+    //$applications = Application::with('user', 'scheme', 'createdBy')->get();
+    //$application = $applications->first();
+    //$application->user->email;
+    //$application->created_at->addYears(3);
 }
