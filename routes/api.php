@@ -22,3 +22,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::apiResource('users', UsersController::class);
 Route::apiResource('schemes', SchemesController::class);
+Route::delete('schemes/{scheme}/delete', [SchemesController::class, 'forceDelete']);

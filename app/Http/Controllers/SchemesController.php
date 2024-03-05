@@ -55,4 +55,13 @@ class SchemesController extends Controller
 
         return 'Scheme has been deleted';
     }
+
+    public function forceDelete($id)
+    {
+        $scheme = Scheme::withTrashed()->where('id', $id)->firstOrFail();
+
+        $scheme->forceDelete();
+
+        return 'Scheme has been force deleted';
+    }
 }
