@@ -27,12 +27,17 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+        // validate inputs
         $validatedData = $request->validate([
             'name' => ['required', 'min:5'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed']
         ]);
 
-        return $request->all();
+        // store data into database
+        $user = User::create($validatedData);
+
+        // return response
+        return $user;
     }
 }
