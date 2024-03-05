@@ -24,4 +24,15 @@ class UsersController extends Controller
         $user->load('applications');
         return response()->json($user);
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'min:5'],
+            'email' => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'confirmed']
+        ]);
+
+        return $request->all();
+    }
 }
