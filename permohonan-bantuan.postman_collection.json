@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "c5cd747a-1ca7-4dd1-8026-d1c8c3a64c66",
+		"name": "permohonan-bantuan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "364535"
+	},
+	"item": [
+		{
+			"name": "Schemes",
+			"item": [
+				{
+					"name": "Get Schemes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/schemes",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"schemes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Scheme",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/schemes",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"schemes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Schemes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "New Scheme",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Test Add Scheme",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/schemes",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"schemes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Scheme",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bantuan Persekolahan\",\n    \"descriptiom\": \"Keterangan Bantuan Persekolahan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/schemes/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"schemes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Scheme",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/schemes/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"schemes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Scheme Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/schemes/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"schemes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server}}/api/users",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Amin A\",\n    \"email\": \"aminadha@example3.com\",\n    \"password\": \"password baru\",\n    \"password_confirmation\": \"password bar\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/users/4",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{server}}/api/users/4",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
