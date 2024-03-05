@@ -38,4 +38,5 @@ class Application extends Model
     //$application = $applications->first();
     //$application->user->email;
     //$application->created_at->addYears(3);
+    //https://github.com/btmmaiwp/permohonan-bantuan
 }
