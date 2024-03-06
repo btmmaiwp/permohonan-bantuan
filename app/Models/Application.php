@@ -10,6 +10,19 @@ class Application extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'created_by',
+        'scheme_id',
+        'user_id',
+        'amount',
+        'status'
+    ];
+
     /* relationships */
 
     // Application::with(['scheme', 'user', 'createdBy'])->get();
