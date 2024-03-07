@@ -22,11 +22,21 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('users', UsersController::class);
-// schemes
-Route::apiResource('schemes', SchemesController::class);
-Route::delete('schemes/{scheme}/delete', [SchemesController::class, 'forceDelete']);
-// applications
-Route::apiResource('applications', ApplicationsController::class);
-Route::delete('applications/{application}/delete', [ApplicationsController::class, 'forceDelete']);
-Route::get('active-users', ListActiveUsersController::class);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::middleware(['auth:api'])->group(function () {
+    // auth
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    // users
+    Route::apiResource('users', UsersController::class);
+
+    // schemes
+    Route::apiResource('schemes', SchemesController::class);
+    Route::delete('schemes/{scheme}/delete', [SchemesController::class, 'forceDelete']);
+
+    // applications
+    Route::apiResource('applications', ApplicationsController::class);
+    Route::delete('applications/{application}/delete', [ApplicationsController::class, 'forceDelete']);
+    Route::get('active-users', ListActiveUsersController::class);
+});
