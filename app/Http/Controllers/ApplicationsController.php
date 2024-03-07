@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationsController extends Controller
 {
@@ -24,16 +25,19 @@ class ApplicationsController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->user()->id;
+        // auth()->id;
+        // Auth::id();
+
         $validatedData = $request->validate([
-            'user_id' => ['required'],
             'scheme_id' => ['required'],
-            'created_by' => ['required'],
             'amount' => ['required', 'decimal:2'],
         ]);
 
-        $application = new Application();
-        $application->fill($validatedData);
-        $application->save();
+        $validatedData['user_id'] = Auth::id();
+        $validatedData['created_by'] = Auth::id();
+
+        $application = Application::create($validatedData);
 
         return response()->json($application);
     }
