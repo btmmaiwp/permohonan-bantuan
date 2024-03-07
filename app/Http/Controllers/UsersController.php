@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }
+
     public function index()
     {
         $users = User::with('applications')->get();
@@ -19,7 +24,7 @@ class UsersController extends Controller
     public function show(Request $request, User $user)
     {
         $user->load('applications');
-        return new UserResource($user);
+        return UserResource::make($user);
     }
 
     public function store(StoreUserRequest $request)
@@ -31,9 +36,8 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(UpdateUserRequest $request, String $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $user = User::findOrFail($id);
         $user->update($request->validated());
 
         return response()->json([

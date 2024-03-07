@@ -5,6 +5,7 @@ use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\ListActiveUsersController;
 use App\Http\Controllers\SchemesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\AdminRoute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,11 @@ Route::middleware(['auth:api'])->group(function () {
     // auth
     Route::post('logout', [AuthController::class, 'logout']);
 
-    // users
-    Route::apiResource('users', UsersController::class);
+
+    Route::middleware('admin.route')->group(function () {
+        // users
+        Route::apiResource('users', UsersController::class);
+    });
 
     // schemes
     Route::apiResource('schemes', SchemesController::class);
