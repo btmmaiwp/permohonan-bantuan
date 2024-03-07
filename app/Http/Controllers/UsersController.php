@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
     public function index()
     {
         $users = User::with('applications')->get();
-
         return UserResource::collection($users);
     }
 
@@ -22,34 +22,24 @@ class UsersController extends Controller
         return new UserResource($user);
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        // validate inputs
-        $validatedData = $request->validate([
-            'name' => ['required', 'min:5'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'confirmed']
+        User::create($request->validated());
+        return response()->json([
+            'message' => 'Data stored.',
+            'success' => true
         ]);
-
-        // store data into database
-        $user = User::create($validatedData);
-
-        // return response
-        return $user;
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, String $id)
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'min:5'],
-            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
-            'password' => ['confirmed']
+        $user = User::findOrFail($id);
+        $user->update($request->validated());
+
+        return response()->json([
+            'message' => 'Data updated.',
+            'success' => true
         ]);
-
-        $user->fill($validatedData);
-        $user->save();
-
-        return $user;
     }
 
     public function destroy(User $user)
