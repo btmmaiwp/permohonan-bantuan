@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'email_verified_at'
     ];
 
     /**
@@ -33,6 +34,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // protected $dates = [
+    //     'email_verified_at'
+    // ];
+
     /**
      * The attributes that should be cast.
      *
@@ -42,6 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /* relationships */
 
     public function applications()
     {
